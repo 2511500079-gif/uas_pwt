@@ -73,8 +73,8 @@ font-weight:bold;
 <textarea name="keterangan" class="form-control"></textarea>
 </div>
 
-<button name="simpan" class="btn btn-success">
-Simpan
+<button type="submit" name="simpan" class="btn btn-success">
+    Simpan
 </button>
 
 <a href="tampil.php" class="btn btn-secondary">
