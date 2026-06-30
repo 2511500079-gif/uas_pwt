@@ -11,13 +11,7 @@ $alamat     = $_POST['alamat'];
 
 mysqli_query($conn,
 
-"INSERT INTO balita VALUES(
-'$id',
-'$nama',
-'$jk',
-'$ortu',
-'$alamat'
-)");
+"INSERT INTO balita VALUES('$id','$nama','$jk','$ortu','$alamat')");
 
 header("Location:tampil.php");
 }
