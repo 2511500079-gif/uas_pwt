@@ -13,16 +13,32 @@ $kader  = mysqli_query($conn,"SELECT * FROM kader");
 
 if(isset($_POST['simpan'])){
 
-$id      = $_POST['id_periksa'];
-$balita  = $_POST['id_balita'];
-$kader   = $_POST['id_kader'];
-$tanggal = $_POST['tanggal'];
-$bb      = $_POST['berat_badan'];
-$tb      = $_POST['tinggi_badan'];
+    $id      = $_POST['id_periksa'];
+    $idbalita = $_POST['id_balita'];
+    $idkader  = $_POST['id_kader'];
+    $tanggal = $_POST['tanggal'];
+    $bb      = $_POST['berat_badan'];
+    $tb      = $_POST['tinggi_badan'];
 
-mysqli_query($conn,"INSERT INTO pemeriksaan VALUES('$id','$balita','$kader','$tanggal','$bb','$tb')");
+    $query = mysqli_query($conn,"
+    INSERT INTO pemeriksaan
+    (id_periksa,id_balita,id_kader,tanggal,berat_badan,tinggi_badan)
+    VALUES
+    ('$id','$idbalita','$idkader','$tanggal','$bb','$tb')
+    ");
 
-header("Location:tampil.php");
+    if($query){
+
+        echo "<script>
+        alert('Data Berhasil Disimpan');
+        window.location='tampil.php';
+        </script>";
+
+    }else{
+
+        echo "Error : ".mysqli_error($conn);
+
+    }
 }
 ?>
 
@@ -37,23 +53,23 @@ header("Location:tampil.php");
 <style>
 
 body{
-background:#f3f0ff;
+    background:#f3f0ff;
 }
 
 .card{
-max-width:800px;
-margin:auto;
-margin-top:40px;
-border:none;
-border-radius:20px;
-box-shadow:0 5px 20px rgba(0,0,0,.1);
+    max-width:800px;
+    margin:auto;
+    margin-top:40px;
+    border:none;
+    border-radius:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
 }
 
 .card-header{
-background:#9333ea;
-color:white;
-font-size:24px;
-font-weight:bold;
+    background:#9333ea;
+    color:white;
+    font-size:24px;
+    font-weight:bold;
 }
 
 </style>
@@ -73,13 +89,15 @@ font-weight:bold;
 
 <div class="mb-3">
 <label>ID Pemeriksaan</label>
-<input type="text"
+<input
+type="text"
 name="id_periksa"
 class="form-control"
 required>
 </div>
 
 <div class="mb-3">
+
 <label>Balita</label>
 
 <select
@@ -126,7 +144,8 @@ required>
 
 <div class="mb-3">
 <label>Tanggal Pemeriksaan</label>
-<input type="date"
+<input
+type="date"
 name="tanggal"
 class="form-control"
 required>
@@ -134,7 +153,8 @@ required>
 
 <div class="mb-3">
 <label>Berat Badan (Kg)</label>
-<input type="number"
+<input
+type="number"
 step="0.01"
 name="berat_badan"
 class="form-control"
@@ -143,7 +163,8 @@ required>
 
 <div class="mb-3">
 <label>Tinggi Badan (Cm)</label>
-<input type="number"
+<input
+type="number"
 step="0.01"
 name="tinggi_badan"
 class="form-control"
@@ -154,17 +175,13 @@ required>
 type="submit"
 name="simpan"
 class="btn btn-success">
-
 Simpan
-
 </button>
 
 <a
 href="tampil.php"
 class="btn btn-secondary">
-
 Kembali
-
 </a>
 
 </form>

@@ -3,11 +3,7 @@ include "../koneksi.php";
 
 $id = $_GET['id'];
 
-$data = mysqli_fetch_array(
-mysqli_query($conn,
-"SELECT * FROM balita
-WHERE id_balita='$id'")
-);
+$data = mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM balita WHERE id_balita='$id'"));
 
 if(isset($_POST['update'])){
 
@@ -16,17 +12,7 @@ $jk     = $_POST['jk'];
 $ortu   = $_POST['nama_ortu'];
 $alamat = $_POST['alamat'];
 
-mysqli_query($conn,
-
-"UPDATE balita SET
-
-nama_balita='$nama',
-jk='$jk',
-nama_ortu='$ortu',
-alamat='$alamat'
-
-WHERE id_balita='$id'
-");
+mysqli_query($conn,"UPDATE balita SET nama_balita='$nama',jk='$jk',nama_ortu='$ortu',alamat='$alamat' WHERE id_balita='$id'");
 
 header("Location:tampil.php");
 }
