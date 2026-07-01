@@ -23,9 +23,7 @@ $tanggal   = $_POST['tanggal'];
 $bb        = $_POST['berat_badan'];
 $tb        = $_POST['tinggi_badan'];
 
-mysqli_query($conn,
-
-"UPDATE pemeriksaan SET id_balita='$id_balita', id_kader='$id_kader', tanggal='$tanggal', berat_badan='$bb', tinggi_badan='$tb' WHERE id_periksa='$id'");
+mysqli_query($conn,"UPDATE pemeriksaan SET id_balita='$id_balita', id_kader='$id_kader', tanggal='$tanggal', berat_badan='$bb', tinggi_badan='$tb' WHERE id_periksa='$id'");
 
 header("Location:tampil.php");
 

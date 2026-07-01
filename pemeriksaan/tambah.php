@@ -8,7 +8,8 @@ if(!isset($_SESSION['username'])){
 
 include "../koneksi.php";
 
-$balita = mysqli_query($conn,"SELECT * FROM balita");
+$balita = mysqli_query(<?php
+$conn = mysqli_connect("localhost", "root", "", "nama_db");,"SELECT * FROM balita");
 $kader  = mysqli_query($conn,"SELECT * FROM kader");
 
 if(isset($_POST['simpan'])){

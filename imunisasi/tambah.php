@@ -7,13 +7,7 @@ $id=$_POST['id_imunisasi'];
 $nama=$_POST['nama_imunisasi'];
 $ket=$_POST['keterangan'];
 
-mysqli_query($conn,
-
-"INSERT INTO imunisasi VALUES(
-'$id',
-'$nama',
-'$ket'
-)");
+mysqli_query($conn,"INSERT INTO imunisasi VALUES('$id','$nama','$ket')");
 
 header("Location:tampil.php");
 }

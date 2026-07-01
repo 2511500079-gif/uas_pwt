@@ -3,25 +3,14 @@ include "../koneksi.php";
 
 $id=$_GET['id'];
 
-$data=mysqli_fetch_array(
-mysqli_query($conn,
-"SELECT * FROM kader
-WHERE id_kader='$id'")
-);
+$data=mysqli_fetch_array(mysqli_query($conn,"SELECT * FROM kader WHERE id_kader='$id'"));
 
 if(isset($_POST['update'])){
 
 $nama=$_POST['nama_kader'];
 $hp=$_POST['no_hp'];
 
-mysqli_query($conn,
-
-"UPDATE kader SET
-
-nama_kader='$nama',
-no_hp='$hp'
-
-WHERE id_kader='$id'");
+mysqli_query($conn,"UPDATE kader SET nama_kader='$nama',no_hp='$hp' WHERE id_kader='$id'");
 
 header("Location:tampil.php");
 }
